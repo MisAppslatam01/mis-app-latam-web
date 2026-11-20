@@ -1,0 +1,37 @@
+:root {
+  --amber: #c2410c;
+  --amber-2: #f59e0b;
+  --green: #16a34a;
+}
+body {
+  background: radial-gradient(1100px 700px at 65% -10%, #3b1d0f 0%, #120b07 55%);
+}
+.brand-icon {
+  background: #c2410c;
+  color: #fff;
+}
+.brand strong { letter-spacing: .04em; }
+.brand small { color: #e7c9b8; }
+.eyebrow { color: #fdba74; }
+h1 em { color: #fb923c; }
+.phone {
+  border-color: rgba(194, 65, 12, .7);
+}
+.phone img {
+  width: 100%;
+  height: 100%;
+  border-radius: 29px;
+  object-fit: cover;
+  background: #f6f1e8;
+}
+.float-card strong { color: #c2410c; }
+.planes.one {
+  grid-template-columns: 1fr;
+  max-width: 560px;
+}
+.planes.one .plan { width: 100%; }
+.plan-destacado { border-color: #c2410c; }
+.plan-badge { background: #c2410c; color: #fff; }
+.plan-nombre { color: #c2410c; }
+.transfer-card > strong { color: #c2410c; }
+.wa-header, .wa-float { background: #16a34a; }

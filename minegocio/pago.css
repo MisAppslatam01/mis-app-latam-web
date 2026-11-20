@@ -1,0 +1,23 @@
+/* Modal de pago compartido por las páginas de app. */
+body.pago-abierto { overflow: hidden; }
+.pago-overlay { position: fixed; inset: 0; background: rgba(2, 6, 23, .78); backdrop-filter: blur(6px); z-index: 100; display: flex; align-items: center; justify-content: center; padding: 18px; }
+.pago-card { position: relative; width: min(520px, 100%); max-height: 92vh; overflow: auto; background: #fff; color: #0f172a; border-radius: 22px; padding: 26px; box-shadow: 0 30px 90px rgba(0, 0, 0, .45); }
+.pago-cerrar { position: absolute; right: 14px; top: 12px; border: 0; background: #f1f5f9; color: #0f172a; width: 34px; height: 34px; border-radius: 50%; font-size: 22px; line-height: 1; cursor: pointer; }
+.pago-eyebrow { font-size: 11px; font-weight: 800; letter-spacing: .16em; color: #b45309; }
+.pago-card h2 { font-size: 26px; margin: 8px 0 2px; letter-spacing: -.02em; }
+.pago-precio { font-size: 34px; font-weight: 900; line-height: 1; margin-bottom: 18px; }
+.pago-precio small { font-size: 13px; color: #64748b; font-weight: 700; }
+.pago-bloque { border-top: 1px solid #e2e8f0; padding-top: 14px; margin-top: 14px; }
+.pago-bloque h3 { font-size: 14px; margin: 0 0 4px; }
+.pago-bloque p { font-size: 12.5px; color: #64748b; margin: 0 0 10px; line-height: 1.45; }
+.pago-datos { display: grid; gap: 7px; margin: 0 0 12px; }
+.pago-datos div { display: flex; justify-content: space-between; gap: 12px; border-bottom: 1px dashed #e2e8f0; padding-bottom: 6px; }
+.pago-datos dt { font-size: 11px; color: #64748b; font-weight: 800; text-transform: uppercase; letter-spacing: .04em; }
+.pago-datos dd { margin: 0; font-size: 13px; font-weight: 800; text-align: right; word-break: break-word; }
+.pago-separador { display: flex; align-items: center; gap: 10px; color: #94a3b8; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; margin: 16px 0 12px; }
+.pago-separador:before, .pago-separador:after { content: ""; height: 1px; background: #e2e8f0; flex: 1; }
+.pago-qr { display: block; width: 180px; height: 180px; object-fit: contain; margin: 6px auto 12px; border: 1px solid #e2e8f0; border-radius: 12px; background: #fff; }
+.pago-aviso { font-size: 12px !important; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 10px; padding: 9px 10px; margin: 8px 0 12px !important; }
+.pago-nota { font-size: 11.5px !important; color: #64748b; margin: 10px 0 0 !important; }
+.pago-card .btn { min-height: 44px; }
+@media (max-width: 520px) { .pago-card { padding: 20px; } .pago-precio { font-size: 30px; } }

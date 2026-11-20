@@ -1,0 +1,116 @@
+/* Tema claro para las páginas de cada app. Se carga después del CSS base. */
+:root {
+  --bg: #f2f5f9;
+  --bg-2: #e8eef6;
+  --panel: #ffffff;
+  --line: #d8e1ec;
+  --text: #0f172a;
+  --muted: #536277;
+  --amber: #f59e0b;
+  --amber-2: #fbbf24;
+  --green: #15803d;
+}
+
+body {
+  background:
+    radial-gradient(900px 520px at 85% -10%, #ffe7bd 0%, transparent 62%),
+    radial-gradient(700px 450px at 0% 25%, #dce9f7 0%, transparent 55%),
+    var(--bg) fixed;
+  color: var(--text);
+}
+
+.brand small { color: #64748b; }
+nav a { color: #334155; }
+nav a:hover { color: #0f172a; }
+.nav-cta { color: #111827 !important; }
+
+h1 { color: #0f172a; }
+h1 em { color: #b45309; }
+.eyebrow { color: #b45309; }
+.lead { color: #334155; }
+.checks { color: #334155; }
+.checks li::before { color: #15803d; }
+
+.btn.ghost {
+  border-color: #cbd5e1;
+  color: #0f172a;
+  background: rgba(255, 255, 255, .75);
+}
+.btn.ghost:hover { background: #fff; }
+
+.phone {
+  background: #050a12;
+  border-color: rgba(245, 158, 11, .6);
+  box-shadow: 0 24px 60px rgba(15, 23, 42, .2), 0 0 0 8px rgba(255, 255, 255, .65);
+}
+.float-card { box-shadow: 0 16px 36px rgba(15, 23, 42, .14); }
+
+.strip { border-color: var(--line); }
+.strip strong { color: #b45309; }
+.strip span { color: var(--muted); }
+
+.section h2 { color: #0f172a; }
+.cards article {
+  background: #fff;
+  border-color: var(--line);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, .06);
+}
+.cards .num { color: #b45309; }
+.cards h3 { color: #0f172a; }
+.cards p { color: var(--muted); }
+
+.demo { border-color: var(--line); }
+.demo-copy p { color: var(--muted); }
+.demo-copy ol { color: #334155; }
+.small { color: #64748b !important; }
+
+.form {
+  background: #fff;
+  border-color: #e5eaf1;
+  box-shadow: 0 18px 46px rgba(15, 23, 42, .08);
+}
+.field label { color: #334155; }
+.field input {
+  background: #f8fafc;
+  color: #0f172a;
+  border-color: #cbd5e1;
+}
+.field input:focus { border-color: #d97706; box-shadow: 0 0 0 3px rgba(245, 158, 11, .15); }
+.form-note { color: #64748b; }
+.config-warning { color: #991b1b; background: #fef2f2; border-color: #fecaca; }
+.config-warning code { color: #92400e; }
+
+.price { border-color: var(--line); }
+.price p { color: var(--muted); }
+.price-note { color: #64748b !important; }
+
+.descarga {
+  border-color: #86efac;
+  background: #ecfdf5;
+}
+.descarga strong { color: #15803d; }
+.descarga p { color: #334155; }
+
+.faq { border-color: var(--line); }
+details { border-color: var(--line); }
+summary { color: #0f172a; }
+details p { color: var(--muted); }
+
+.final-cta { border-color: var(--line); }
+.final-cta p { color: var(--muted); }
+
+footer { border-color: var(--line); color: #64748b; }
+footer strong { color: #0f172a; }
+.legal a { color: #334155; }
+
+.cross {
+  border-color: #fcd34d;
+  background: linear-gradient(120deg, #fff7e6, #ffffff);
+}
+.cross p { color: #475569; }
+
+.wa-float { box-shadow: 0 12px 28px rgba(15, 23, 42, .18); }
+
+@media (max-width: 900px) {
+  .hero { padding-top: 30px; }
+}

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pago recibido · MI NEGOCIO</title>
+  <link rel="stylesheet" href="styles.css?v=1">
+  <link rel="stylesheet" href="brand.css?v=1">
+  <style>
+    .gracias { max-width: 640px; margin: 8vh auto; background:#fff; color:#0f172a; border-radius:22px; padding:32px; box-shadow:0 20px 60px rgba(0,0,0,.3); text-align:center; }
+    .gracias .check { width:72px;height:72px;border-radius:50%;background:#d1fae5;color:#059669;display:grid;place-items:center;font-size:38px;margin:0 auto 16px; }
+    .gracias h1 { margin:0 0 8px; font-size:30px; letter-spacing:-.02em; }
+    .gracias > p { color:#475569; }
+    .gracias ol { text-align:left; max-width:430px; margin:20px auto; color:#334155; line-height:1.6; }
+    .gracias .btn { margin-top:6px; }
+    .gracias .small { margin-top:18px; font-size:12px; color:#7f91a5; }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="gracias">
+      <div class="check">✓</div>
+      <h1>¡Pago recibido!</h1>
+      <p>Gracias por comprar MI NEGOCIO. Tu licencia se activa en minutos.</p>
+      <ol>
+        <li>Envíanos el comprobante de pago por WhatsApp (botón de abajo).</li>
+        <li>Te respondemos con tu código de activación <strong>MN-...</strong></li>
+        <li>Ábrelo en la app: <strong>Ajustes → Licencia</strong>.</li>
+      </ol>
+      <a class="btn primary full" id="btn-comprobante" href="#">📲 Enviar comprobante por WhatsApp</a>
+      <a class="btn ghost full" href="index.html" style="margin-top:10px">Volver a Mi Negocio</a>
+      <p class="small">¿No tienes el archivo? Descárgalo en la página principal, sección "Descargar".</p>
+    </section>
+  </main>
+  <script src="config.js?v=1"></script>
+  <script>
+    (function () {
+      var cfg = window.MI_NEGOCIO || {};
+      var numero = String(cfg.whatsapp || "").replace(/\D/g, "");
+      var btn = document.getElementById("btn-comprobante");
+      if (btn && numero.length >= 10) {
+        btn.href = "https://wa.me/" + numero + "?text=" +
+          encodeURIComponent("Hola, ya pagué Mi Negocio. Te envío el comprobante de pago.");
+      }
+    })();
+  </script>
+</body>
+</html>
