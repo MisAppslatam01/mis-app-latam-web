@@ -109,9 +109,9 @@
       <div class="demo-copy">
         <span class="eyebrow">DEMO DE 10 DÍAS</span>
         <h2>Pruébalo con tu inventario.</h2>
-        <p>Déjanos tus datos: la descarga se habilita al instante. La prueba de 10 días empieza sola en tu equipo. Sin tarjeta.</p>
+        <p>Déjanos tus datos: te enviamos el instalador por WhatsApp. La prueba de 10 días empieza sola en tu equipo. Sin tarjeta.</p>
         <ol>
-          <li>Descargas el instalador.</li>
+          <li>Recibes el instalador por WhatsApp.</li>
           <li>Instalas y empiezas la prueba de 10 días.</li>
           <li>Al terminar, decides si compras. Tus datos no se borran.</li>
         </ol>
@@ -136,13 +136,12 @@
           <input id="whatsapp" name="whatsapp" type="tel" autocomplete="tel" required placeholder="300 000 0000">
         </div>
         <button class="btn primary full" type="submit">Solicitar demo de 10 días</button>
-        <p class="form-note" id="form-note">Al enviar, se abre WhatsApp con tus datos y se habilita la descarga.</p>
+        <p class="form-note" id="form-note">Déjanos tus datos. Te enviamos el instalador por WhatsApp y la prueba de 10 días empieza al instalarlo.</p>
 
-        <div class="descarga" id="descarga-demo" hidden>
-          <strong>✅ Descarga habilitada</strong>
-          <p>Instala MI ALMACÉN en tu computador. La prueba de 10 días empieza en el primer uso.</p>
-          <a class="btn primary full" id="btn-descarga" href="Instalador-Almacen-1.7.0.exe" download>⬇️ Descargar instalador (Windows)</a>
-        </div>
+        <p class="form-note" id="wa-fallback" hidden>
+          <a href="#" id="wa-fallback-link" target="_blank" rel="noopener">Si no se abrió WhatsApp, toca aquí para enviar tus datos.</a>
+        </p>
+
         <p class="config-warning" id="config-warning" hidden>
           Falta configurar el número de WhatsApp en <code>config.js</code> antes de publicar.
         </p>
