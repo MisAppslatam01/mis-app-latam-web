@@ -34,12 +34,11 @@
     });
   });
 
-  // --- Formulario de demo: abre WhatsApp y habilita la descarga ---
+  // --- Formulario de demo: solo captura datos y abre WhatsApp ---
   const form = document.getElementById("form-demo");
   const nota = document.getElementById("form-note");
-  const bloqueDescarga = document.getElementById("descarga-demo");
-  const btnDescarga = document.getElementById("btn-descarga");
-  if (btnDescarga && cfg.instalador) btnDescarga.setAttribute("href", cfg.instalador);
+  const waFallback = document.getElementById("wa-fallback");
+  const waFallbackLink = document.getElementById("wa-fallback-link");
 
   if (form) {
     form.addEventListener("submit", function (e) {
@@ -58,23 +57,32 @@
         return;
       }
 
+      const soloDigitos = whatsapp.replace(/\D/g, "");
+      const numeroCliente = soloDigitos.startsWith("57") && soloDigitos.length > 10
+        ? soloDigitos.slice(2)
+        : soloDigitos;
+      if (!/^3\d{9}$/.test(numeroCliente)) {
+        alert("Escribe un WhatsApp colombiano de 10 dígitos, por ejemplo 300 000 0000.");
+        return;
+      }
+
+      const origen = new URLSearchParams(window.location.search).get("utm_campaign") || "almacen";
       const texto =
         "Hola, quiero la demo de " + (cfg.diasDemo || 10) + " días de MI ALMACÉN.\n" +
         "Nombre: " + nombre + "\n" +
         "Empresa: " + (empresa || "No indicada") + "\n" +
         "Correo: " + correo + "\n" +
-        "WhatsApp: " + whatsapp;
+        "WhatsApp: " + numeroCliente + "\n" +
+        "Origen: " + origen;
 
+      if (waFallbackLink) waFallbackLink.setAttribute("href", enlaceWhatsApp(texto));
+      if (waFallback) waFallback.hidden = false;
       abrirWhatsApp(texto);
 
-      if (bloqueDescarga) {
-        bloqueDescarga.hidden = false;
-        bloqueDescarga.scrollIntoView({ behavior: "smooth", block: "center" });
-      }
       if (nota) {
         nota.textContent = configurado
-          ? "Se abrió WhatsApp con tus datos y la descarga quedó habilitada."
-          : "Descarga habilitada. Falta configurar el WhatsApp del negocio en config.js.";
+          ? "Solicitud lista. Te escribiré por WhatsApp con el instalador y los primeros pasos."
+          : "Falta configurar el WhatsApp del negocio en config.js.";
       }
     });
   }
