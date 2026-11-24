@@ -532,9 +532,12 @@ function b64Bytes(texto) {
 async function verificarLicencia(obj) {
   if (!obj || !obj.payload || !obj.signature) throw new Error('El archivo no es una licencia de Mi Negocio.');
   if (obj.payload.producto !== 'minegocio' || obj.payload.version !== 1) throw new Error('Producto o versión incorrectos.');
-  if (String(obj.payload.equipo || '').toUpperCase() !== String(S.cfg.licencia.equipo || '').toUpperCase()) {
-    throw new Error('La licencia es para otro equipo.');
-  }
+  const actual = String(S.cfg.licencia.equipo || '').toUpperCase();
+  const equipos = (Array.isArray(obj.payload.equipos) && obj.payload.equipos.length
+    ? obj.payload.equipos
+    : [obj.payload.equipo]).map((x) => String(x || '').toUpperCase());
+  if (!equipos.includes(actual)) throw new Error('La licencia es para otro equipo.');
+  if (obj.payload.plan === 'local' && equipos.length > 1) throw new Error('El plan Local es para un solo equipo.');
   const key = await crypto.subtle.importKey(
     'spki', b64Bytes(LICENCIA_PUBLICA),
     { name: 'ECDSA', namedCurve: 'P-256' }, false, ['verify']
@@ -548,17 +551,21 @@ async function importarLicencia(input) {
   try {
     const obj = JSON.parse(await file.text());
     if (!(await verificarLicencia(obj))) throw new Error('La firma no es válida.');
+    const equipos = Array.isArray(obj.payload.equipos) && obj.payload.equipos.length
+      ? obj.payload.equipos
+      : [obj.payload.equipo];
     S.cfg.licencia = Object.assign({}, S.cfg.licencia, {
       activa: true,
       codigo: obj.payload.plan,
       plan: obj.payload.plan,
       cliente: obj.payload.cliente,
       emitida: obj.payload.emitida,
+      equipos,
       archivo: obj
     });
     guardar();
     render();
-    toast('Licencia activada. Plan: ' + obj.payload.plan + '.');
+    toast('Licencia activada. Plan: ' + obj.payload.plan + ' · ' + equipos.length + ' equipo(s).');
   } catch (e) {
     toast(e.message || 'No se pudo activar la licencia.');
   } finally {
@@ -2410,11 +2417,11 @@ function paginaAjustes() {
 
   <div class="card">
     <div class="card-title"><h2>Licencia</h2><span class="pill ${c.licencia.activa ? 'ok' : 'warn'}">${c.licencia.activa ? 'Activa' : 'Demo'}</span></div>
-    <p class="small muted">Licencia para <b>1 computador + 1 celular</b>. Código de este equipo:</p>
+    <p class="small muted">Licencia para <b>1 computador + 1 celular</b> cuando el plan es Negocio. Código de este equipo:</p>
     <div class="notice mt10"><b>${esc(c.licencia.equipo)}</b></div>
-    ${c.licencia.activa ? `<div class="notice green mt10">Plan: <b>${esc(c.licencia.plan || c.licencia.codigo || 'Negocio')}</b>${c.licencia.cliente ? ` · ${esc(c.licencia.cliente)}` : ''}</div>` : `<div class="notice mt10">Demo activa: ${demoDiasRestantes()} días restantes.</div>`}
+    ${c.licencia.activa ? `<div class="notice green mt10">Plan: <b>${esc(c.licencia.plan || c.licencia.codigo || 'Negocio')}</b>${c.licencia.cliente ? ` · ${esc(c.licencia.cliente)}` : ''}${c.licencia.equipos ? ` · ${c.licencia.equipos.length} equipo(s)` : ''}</div>` : `<div class="notice mt10">Demo activa: ${demoDiasRestantes()} días restantes.</div>`}
     <label class="btn soft block mt10" style="display:flex;justify-content:center">Cargar archivo de licencia<input type="file" accept=".json,application/json" style="display:none" onchange="importarLicencia(this)"></label>
-    <p class="xs muted mt6">La licencia es un archivo firmado para este equipo. No sirve en otro PC ni en otro celular.</p>
+    <p class="xs muted mt6">La licencia se verifica contra los códigos de equipo incluidos en el archivo. El plan Local es para un equipo; el plan Negocio puede incluir PC y celular.</p>
   </div>
 
   <div class="card">
