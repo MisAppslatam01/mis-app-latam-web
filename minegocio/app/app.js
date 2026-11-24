@@ -2496,10 +2496,10 @@ function nombreCopia() {
 function abrirCopiaSheet() {
   sheet('Copia de seguridad', `
     <div class="notice green">Es una copia de todos los datos de tu negocio.</div>
-    <p class="small muted mt10">Puedes enviarla a tu WhatsApp o guardarla en el celular. Si cambias de teléfono o borras la app, la usas para recuperar todo.</p>
-    <button class="btn primary block mt14" onclick="compartirCopia()">📤 Enviar copia por WhatsApp</button>
+    <p class="small muted mt10">Puedes compartirla por WhatsApp, guardarla en Drive o descargarla. Si cambias de teléfono o borras la app, la usas para recuperar todo.</p>
+    <button class="btn primary block mt14" onclick="compartirCopia()">📤 Compartir copia (WhatsApp, Drive...)</button>
     <button class="btn ghost block mt10" onclick="descargarCopia()">⬇ Guardar copia en el celular</button>
-    <p class="xs muted mt10">Si la guardas, queda en <b>Archivos > Descargas</b> con el nombre <b>${nombreCopia()}</b>.</p>
+    <p class="xs muted mt10">En el celular, elige <b>Drive</b> en el menú de compartir. En el PC, guarda el archivo en tu carpeta de Google Drive.</p>
     <details class="mt14">
       <summary class="small bold" style="cursor:pointer">Si no puedes enviarla ni descargarla</summary>
       <button class="btn soft block mt10" onclick="copiarRespaldo()">Copiar como texto</button>
