@@ -324,6 +324,7 @@ let UI = {
     direccion: S.cfg.direccion || '',
     domicilio: num(S.cfg.domicilio) || 3000,
     modoInventario: S.cfg.modoInventario || 'simple',
+    logo: '',
     productos: []
   }
 };
@@ -663,6 +664,11 @@ function paginaSetup() {
         ${campo('sCiudad', 'Ciudad', st.ciudad, 'text', 'oninput="UI.setup.ciudad=this.value"')}
       </div>
       ${campo('sDireccion', 'Dirección', st.direccion, 'text', 'oninput="UI.setup.direccion=this.value"')}
+      <div class="photo-pick">
+        <div><div class="small bold">Logo o foto del negocio</div><div class="xs muted">Opcional. Se verá en la cabecera y los recibos.</div></div>
+        ${st.logo ? `<img src="${st.logo}" alt="Logo del negocio">` : ''}
+        <label class="btn ghost sm" style="display:inline-flex">Elegir imagen<input type="file" accept="image/*" style="display:none" onchange="setupLogo(this)"></label>
+      </div>
       <div class="field"><label>Domicilio por defecto</label><input id="sDomicilio" type="number" value="${num(st.domicilio)}" oninput="UI.setup.domicilio=this.value"></div>
       <div class="field">
         <label>¿Cómo manejas el inventario?</label>
@@ -749,6 +755,21 @@ function setupIrProductos() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
+function setupLogo(input) {
+  const f = input.files && input.files[0];
+  if (!f) return;
+  if (!/^image\//.test(f.type)) return toast('Escoge una imagen PNG o JPG.');
+  if (f.size > 2 * 1024 * 1024) return toast('La imagen es muy pesada. Usa una menor a 2 MB.');
+  const r = new FileReader();
+  r.onload = () => {
+    UI.setup.logo = r.result;
+    render();
+    toast('Logo listo. Se guardará al crear el negocio.');
+  };
+  r.onerror = () => toast('No se pudo leer la imagen.');
+  r.readAsDataURL(f);
+}
+
 function setupProd(i, campo, valor) {
   if (!UI.setup.productos[i]) return;
   UI.setup.productos[i][campo] = valor;
@@ -780,6 +801,7 @@ function setupFinalizar() {
   S.cfg.whatsapp = String(UI.setup.whatsapp || '').trim();
   S.cfg.ciudad = String(UI.setup.ciudad || '').trim();
   S.cfg.direccion = String(UI.setup.direccion || '').trim();
+  S.cfg.logo = UI.setup.logo || '';
   S.cfg.domicilio = num(UI.setup.domicilio) || 3000;
   S.cfg.lema = S.cfg.lema || 'Comida, costos y domicilios';
   S.cfg.modoInventario = UI.setup.modoInventario || 'simple';
@@ -2602,7 +2624,7 @@ function resetDemo() {
   S = normalizar(null);
   UI = Object.assign(UI, {
     tab: 'hoy', cart: [], clienteId: '', tipo: 'domicilio', pago: 'efectivo', propina: 0, domicilio: null,
-    setup: { paso: 1, tipo: '', negocio: 'Mi Negocio', whatsapp: '', ciudad: '', direccion: '', domicilio: 3000, modoInventario: 'simple', productos: [] }
+    setup: { paso: 1, tipo: '', negocio: 'Mi Negocio', whatsapp: '', ciudad: '', direccion: '', domicilio: 3000, modoInventario: 'simple', logo: '', productos: [] }
   });
   guardar();
   render();
