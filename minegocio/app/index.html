@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#c2410c">
+<meta name="description" content="Mi Negocio: ventas, domicilios, costos y utilidad para negocios de comida.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icono-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Mi Negocio">
+<title>Mi Negocio</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <div class="logo" id="hLogo" aria-hidden="true">🍲</div>
+    <div class="top-txt">
+      <h1 id="hNegocio">Mi Negocio</h1>
+      <p id="hFecha">Cargando…</p>
+    </div>
+    <button class="icon-btn" onclick="setTab('ajustes')" aria-label="Ajustes" title="Ajustes">⚙️</button>
+  </div>
+</header>
+
+<nav class="nav" aria-label="Menú principal">
+  <button class="nav-btn on" data-tab="hoy" onclick="setTab('hoy')"><span aria-hidden="true">🏠</span>Hoy</button>
+  <button class="nav-btn" data-tab="vender" onclick="setTab('vender')"><span aria-hidden="true">🛒</span>Vender</button>
+  <button class="nav-btn" data-tab="pedidos" onclick="setTab('pedidos')"><span aria-hidden="true">🧾</span>Pedidos</button>
+  <button class="nav-btn" data-tab="caja" onclick="setTab('caja')"><span aria-hidden="true">💵</span>Caja</button>
+  <button class="nav-btn" data-tab="mas" onclick="setTab('mas')"><span aria-hidden="true">☰</span>Más</button>
+</nav>
+
+<main id="app" class="wrap"></main>
+
+<div id="sheetRoot"></div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script src="app.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('./sw.js').catch(function () {});
+  });
+}
+</script>
+</body>
+</html>

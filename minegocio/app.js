@@ -30,7 +30,7 @@
   const btnDescarga = document.getElementById("btn-descarga");
   if (btnDescarga && cfg.instalador) {
     btnDescarga.setAttribute("href", cfg.instalador);
-    btnDescarga.setAttribute("download", "");
+    if (!/\.html(\?|$)/i.test(cfg.instalador)) btnDescarga.setAttribute("download", "");
   }
 
   const waLicencia = document.getElementById("wa-licencia");

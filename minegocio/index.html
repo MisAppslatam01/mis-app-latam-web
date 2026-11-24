@@ -44,13 +44,13 @@
         <h1>Tu comida,<br><em>en orden.</em></h1>
         <p class="lead">Pasteles, fritos, arepas y comidas rápidas. Vende, despacha domicilios y sabe cuánto te queda, sin planillas y sin enredos.</p>
         <div class="actions">
-          <a class="btn primary" href="#descargar">Descargar y probar</a>
+          <a class="btn primary" href="app/index.html" id="btn-instalar">Instalar la app</a>
           <a class="btn ghost" href="#funciones">Ver qué incluye</a>
         </div>
         <ul class="checks">
-          <li>Se instala en tu computador.</li>
+          <li>Se instala en tu celular o computador.</li>
           <li>Funciona sin internet para vender y cobrar.</li>
-          <li>Licencia única para 1 computador + 1 celular.</li>
+          <li>Demo de 10 días. Licencia única para 1 computador + 1 celular.</li>
         </ul>
       </div>
 
@@ -96,25 +96,32 @@
 
     <section class="section demo" id="descargar">
       <div class="demo-copy">
-        <span class="eyebrow">DESCARGA PARA WINDOWS</span>
+        <span class="eyebrow">INSTALACIÓN EN CELULAR O COMPUTADOR</span>
         <h2>Pruébalo con tu negocio.</h2>
-        <p>Descarga el instalador y ábrelo. La app se instala en tu usuario y crea sola su carpeta de datos.</p>
+        <p>Es una aplicación web instalable. No necesitas descargar un programa pesado ni instalar Node.js.</p>
         <ol>
-          <li>Descarga el instalador.</li>
-          <li>Ábrelo y espera unos segundos.</li>
-          <li>Se abre Mi Negocio y crea el acceso directo.</li>
+          <li>Abre la app en Chrome.</li>
+          <li>Menú ⋮ → <b>Instalar aplicación</b> o <b>Agregar a pantalla de inicio</b>.</li>
+          <li>Ábrela desde el ícono.</li>
           <li>Elige tu tipo de negocio y carga tus productos.</li>
         </ol>
-        <p class="small">En el celular, abre el enlace de la app y usa “Agregar a pantalla de inicio”.</p>
+        <p class="small">En computador también puedes abrirla en el navegador y crear un acceso directo.</p>
       </div>
       <div class="form">
         <div class="descarga" style="display:grid">
-          <strong>✅ Descarga disponible</strong>
-          <p>Incluye la app, el servidor local y la carpeta de datos. No necesitas instalar Node.js.</p>
-          <a class="btn primary full" id="btn-descarga" href="Instalador-MiNegocio-1.0.0.exe" download>⬇️ Descargar instalador (Windows)</a>
-          <p class="small">La versión para celular está temporalmente en pausa mientras terminamos MI ALMACÉN.</p>
+          <strong>✅ Demo de 10 días</strong>
+          <p>Incluye ventas, caja, costos, utilidad, personal y respaldo. Tus datos quedan guardados en tu equipo.</p>
+          <a class="btn primary full" href="app/index.html" id="btn-descarga">📲 Abrir e instalar la app</a>
+          <p class="small">La app se abre en el navegador; después la instalas desde el menú de Chrome.</p>
         </div>
-        <a class="btn ghost full" id="wa-licencia" href="#">📲 Pedir ayuda o código de activación</a>
+        <form id="lead-form" style="margin-top:14px;display:grid;gap:8px">
+          <strong>¿Quieres que te acompañe?</strong>
+          <input id="lead-nombre" placeholder="Tu nombre" required>
+          <input id="lead-telefono" placeholder="WhatsApp" inputmode="tel" required>
+          <input id="lead-negocio" placeholder="Nombre del negocio" required>
+          <button class="btn primary full" type="submit">Pedir ayuda por WhatsApp</button>
+        </form>
+        <a class="btn ghost full" id="wa-licencia" href="#">📲 Pedir código de activación</a>
         <p class="form-note">También puedes escribirnos para instalar en el celular o resolver dudas.</p>
       </div>
     </section>
@@ -136,7 +143,7 @@
       <details><summary>¿Puedo usarlo en el celular?</summary><p>Sí. La licencia cubre 1 computador + 1 celular. Escríbenos para enviarte el enlace de instalación en el celular.</p></details>
       <details><summary>¿Necesito internet?</summary><p>Para vender y cobrar no. La conexión se usa si quieres enviar una copia de seguridad o pedir soporte.</p></details>
       <details><summary>¿Sirve para varios negocios?</summary><p>Sí. Al inicio eliges pastelería, fritos, arepas, comidas rápidas, caseras, cafetería o mixto, y puedes cambiar productos y precios.</p></details>
-      <details><summary>¿Cómo activo la licencia?</summary><p>Después del pago recibes un código por WhatsApp. En la app entra a <b>Ajustes → Licencia</b> y escríbelo.</p></details>
+      <details><summary>¿Cómo activo la licencia?</summary><p>Después del pago recibes un archivo de licencia por WhatsApp. En la app entra a <b>Ajustes → Licencia</b> y carga ese archivo. La licencia queda atada a tu equipo.</p></details>
     </section>
 
     <section class="final-cta">
@@ -160,5 +167,20 @@
 
   <script src="config.js?v=1"></script>
   <script src="app.js?v=1"></script>
+  <script>
+  (function () {
+    var form = document.getElementById('lead-form');
+    if (!form) return;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var nombre = document.getElementById('lead-nombre').value.trim();
+      var telefono = document.getElementById('lead-telefono').value.trim();
+      var negocio = document.getElementById('lead-negocio').value.trim();
+      var wa = (window.MI_NEGOCIO && window.MI_NEGOCIO.whatsapp) || '573161646220';
+      var texto = 'Hola, quiero probar Mi Negocio.\nNombre: ' + nombre + '\nWhatsApp: ' + telefono + '\nNegocio: ' + negocio;
+      window.open('https://wa.me/' + wa + '?text=' + encodeURIComponent(texto), '_blank');
+    });
+  })();
+  </script>
 </body>
 </html>

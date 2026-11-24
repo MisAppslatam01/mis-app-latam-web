@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#c2410c">
+<title>Manual de Mi Negocio</title>
+<style>
+:root{--bg:#f6f1e8;--card:#fffdf9;--ink:#1c1917;--muted:#78716c;--line:#e7ddcf;--brand:#c2410c;--brand2:#f59e0b;--ok:#15803d;--warn:#b45309}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;line-height:1.55}
+.wrap{max-width:860px;margin:0 auto;padding:28px 20px 60px}
+.top{background:linear-gradient(135deg,#9a3412,#c2410c);color:#fff;padding:26px 20px;border-radius:0 0 24px 24px}
+.top-in{max-width:860px;margin:0 auto;display:flex;gap:14px;align-items:center}
+.logo{width:56px;height:56px;border-radius:16px;background:#fff2e6;display:grid;place-items:center;font-size:30px}
+h1{margin:0;font-size:25px}h2{font-size:20px;margin:26px 0 8px;color:#7c2d12}h3{font-size:16px;margin:18px 0 6px}
+p,li{font-size:15px}.muted{color:var(--muted)}.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin:14px 0;box-shadow:0 2px 8px rgba(28,25,23,.04)}
+.pill{display:inline-block;background:#ffedd5;color:#9a3412;border-radius:999px;padding:4px 10px;font-size:12px;font-weight:700}
+.notice{background:#fff7ed;border-left:4px solid var(--brand2);padding:10px 12px;border-radius:8px;margin:10px 0}
+.ok{background:#f0fdf4;border-left-color:var(--ok)}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}th,td{text-align:left;padding:8px;border-bottom:1px solid var(--line);vertical-align:top}th{background:#fef3c7}
+.btn{display:inline-block;background:var(--brand);color:#fff;text-decoration:none;padding:10px 16px;border-radius:10px;font-weight:700;margin:6px 6px 0 0;border:0;cursor:pointer}
+.btn.ghost{background:#fff;color:var(--brand);border:1px solid var(--brand)}
+.toc{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;padding-left:18px}
+.footer{text-align:center;color:var(--muted);font-size:13px;margin-top:30px}
+@media print{.top{background:#c2410c!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}.btn{display:none}.card{box-shadow:none;break-inside:avoid}body{background:#fff}}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-in"><div class="logo">🍲</div><div><h1>Manual de Mi Negocio</h1><div style="opacity:.9">Comida, costos y domicilios, en orden</div></div></div></header>
+<main class="wrap">
+<p class="muted">Esta guía explica la app completa. Está pensada para el dueño del negocio, no para un programador.</p>
+<a class="btn" href="MANUAL-MI-NEGOCIO.pdf" download>Descargar PDF</a>
+<button class="btn ghost" onclick="window.print()">Imprimir / guardar PDF</button>
+
+<div class="card">
+<h2>Contenido</h2>
+<ol class="toc">
+<li><a href="#inicio">Primeros pasos</a></li>
+<li><a href="#productos">Productos y costos</a></li>
+<li><a href="#insumos">Insumos y compras</a></li>
+<li><a href="#produccion">Producción y recetas</a></li>
+<li><a href="#vender">Vender y cobrar</a></li>
+<li><a href="#pedidos">Pedidos y domicilios</a></li>
+<li><a href="#caja">Caja</a></li>
+<li><a href="#gastos">Gastos y merma</a></li>
+<li><a href="#personal">Personal</a></li>
+<li><a href="#utilidad">Utilidad</a></li>
+<li><a href="#inventario">Inventario y congelador</a></li>
+<li><a href="#respaldo">Copia de seguridad</a></li>
+<li><a href="#licencia">Licencia y demo</a></li>
+</ol>
+</div>
+
+<h2 id="inicio">1. Primeros pasos</h2>
+<div class="card">
+<p>Al abrir por primera vez:</p>
+<ol>
+<li>Elige el tipo de negocio.</li>
+<li>Escribe nombre, WhatsApp, ciudad y dirección.</li>
+<li>Elige cómo manejas el inventario: sin inventario, simple o congelador.</li>
+<li>Revisa los productos sugeridos. Puedes cambiar nombre, precio, costo y stock inicial.</li>
+<li>Pulsa <b>Crear mi negocio</b>.</li>
+</ol>
+<div class="notice">El stock inicial viene en 10 para que puedas probar. Cámbialo por lo que realmente tienes antes de vender.</div>
+<div class="notice ok">La demo dura 10 días. Al terminar, tus datos no se borran: solo se bloquea la venta hasta activar la licencia.</div>
+</div>
+
+<h2 id="productos">2. Productos y costos</h2>
+<div class="card">
+<p>En <b>Más → Productos</b> agregas lo que vendes. Cada producto tiene:</p>
+<ul>
+<li>Nombre libre: pastel, empanada, dedito, arepa, perro, hamburguesa.</li>
+<li>Categoría y unidad.</li>
+<li>Precio de venta.</li>
+<li>Costo directo.</li>
+<li>Stock y stock mínimo.</li>
+<li>Disponible o pausado.</li>
+</ul>
+<h3>El costo es obligatorio para saber si ganas</h3>
+<p>Si el costo queda en cero, la app muestra la utilidad demasiado alta. Carga el costo de cada producto o usa una receta.</p>
+<div class="notice">Fórmula: utilidad = ventas − costo de lo vendido − gastos − merma.</div>
+</div>
+
+<h2 id="insumos">3. Insumos y compras</h2>
+<div class="card">
+<p>Los insumos son ingredientes o materiales: arroz, pollo, queso, empaques.</p>
+<ol>
+<li>En <b>Más → Insumos</b> crea cada insumo con su unidad y costo.</li>
+<li>En <b>Compras</b> registra lo que compraste.</li>
+<li>La compra suma stock y actualiza el costo promedio.</li>
+<li>Si pagaste, sale de la caja.</li>
+</ol>
+<p>No es obligatorio usar proveedores. Puedes registrar una compra directa.</p>
+</div>
+
+<h2 id="produccion">4. Producción y recetas</h2>
+<div class="card">
+<p>Usa producción cuando hagas un lote:</p>
+<ol>
+<li>Escoge el producto.</li>
+<li>Carga los insumos usados.</li>
+<li>Escribe cuántas unidades salieron.</li>
+<li>Agrega mano de obra u otros costos.</li>
+<li>La app calcula el costo por unidad y suma el stock.</li>
+</ol>
+<p>Si el producto se compra hecho y solo se revende, usa <b>costo directo</b> y no crees receta.</p>
+</div>
+
+<h2 id="vender">5. Vender y cobrar</h2>
+<div class="card">
+<ol>
+<li>Toca <b>Vender</b>.</li>
+<li>Toca los productos para armar el pedido.</li>
+<li>Elige cliente, domicilio, recoger o mesa.</li>
+<li>Elige pago: efectivo, Nequi, Daviplata, QR o tarjeta.</li>
+<li>Marca si está pagado o queda debiendo.</li>
+<li>Agrega propina y notas de cocina.</li>
+<li>Pulsa <b>Guardar pedido</b>.</li>
+</ol>
+<div class="notice">Si el producto maneja inventario, la venta descuenta stock. Si no, solo registra la venta.</div>
+</div>
+
+<h2 id="pedidos">6. Pedidos y domicilios</h2>
+<div class="card">
+<p>En <b>Pedidos</b> ves los pedidos del día y su estado:</p>
+<p><span class="pill">Nuevo</span> → <span class="pill">Preparando</span> → <span class="pill">En camino</span> → <span class="pill">Entregado</span></p>
+<p>Puedes asignar domiciliario, cobrar un pedido pendiente o cancelarlo. El domicilio y la propina se controlan en caja, no en la utilidad de productos.</p>
+</div>
+
+<h2 id="caja">7. Caja</h2>
+<div class="card">
+<ol>
+<li>Abre caja con el efectivo inicial.</li>
+<li>La app suma ventas en efectivo, propinas y domicilios cobrados.</li>
+<li>Resta gastos y compras pagadas en efectivo.</li>
+<li>Al cerrar, escribe el efectivo contado.</li>
+<li>La app muestra la diferencia.</li>
+</ol>
+<div class="notice">Abre y cierra la caja todos los días. Así sabes si falta o sobra dinero.</div>
+</div>
+
+<h2 id="gastos">8. Gastos y merma</h2>
+<div class="card">
+<p><b>Gastos:</b> arriendo, servicios, transporte, mano de obra, otros.</p>
+<p><b>Merma:</b> producto dañado, vencido o no vendido. Descuenta stock y baja la utilidad.</p>
+<p>No mezcles la merma con un gasto normal: son cosas distintas.</p>
+</div>
+
+<h2 id="personal">9. Personal</h2>
+<div class="card">
+<p>Registra empleados con nombre, cargo, teléfono, tipo de pago y tarifa.</p>
+<p>Cuando pagas desde Personal, la app crea un gasto de <b>Mano de obra</b> y lo descuenta de la caja.</p>
+<div class="notice">Si ya pagaste la mano de obra en Personal, no la vuelvas a cargar en Producción: la contarías dos veces.</div>
+</div>
+
+<h2 id="utilidad">10. Utilidad</h2>
+<div class="card">
+<p>En <b>Más → Utilidad</b> ves:</p>
+<ul>
+<li>Ventas del día, semana, mes o todo.</li>
+<li>Costo de lo vendido.</li>
+<li>Gastos y merma.</li>
+<li>Utilidad neta.</li>
+<li>Margen por producto y productos más vendidos.</li>
+<li>Punto de equilibrio.</li>
+</ul>
+<div class="notice">El inventario final no es ganancia: sigue siendo mercancía. No se resta de la utilidad.</div>
+</div>
+
+<h2 id="inventario">11. Inventario y congelador</h2>
+<div class="card">
+<p><b>Sin inventario:</b> vendes y ya, no se descuenta stock.</p>
+<p><b>Inventario simple:</b> cada venta descuenta unidades y avisa cuando queda poco.</p>
+<p><b>Congelador por lotes:</b> produces un lote, lo guardas y vendes por unidades. La app muestra cuántos días alcanza.</p>
+</div>
+
+<h2 id="respaldo">12. Copia de seguridad</h2>
+<div class="card">
+<p>En <b>Más → Ajustes → Copia de seguridad</b>:</p>
+<ul>
+<li>Guardar o enviar copia.</li>
+<li>Restaurar desde archivo.</li>
+<li>Pegar el texto de la copia si no tienes el archivo.</li>
+</ul>
+<div class="notice">Guarda una copia cada semana y antes de cambiar de celular. Restaurar reemplaza todos los datos del equipo.</div>
+</div>
+
+<h2 id="licencia">13. Licencia y demo</h2>
+<div class="card">
+<p>La demo dura 10 días y no borra datos.</p>
+<p>Al terminar, la app muestra el <b>código del equipo</b>. Envía ese código al vendedor y recibirás un archivo de licencia.</p>
+<ol>
+<li>Guarda el archivo <code>.json</code>.</li>
+<li>En la pantalla de demo vencida, pulsa <b>Cargar archivo de licencia</b>.</li>
+<li>Selecciona el archivo.</li>
+<li>La app verifica la firma y el equipo.</li>
+</ol>
+<div class="notice">La licencia sirve solo para ese equipo. No la compartas: está firmada y no funcionará en otro PC o celular.</div>
+</div>
+
+<div class="card">
+<h2>Preguntas rápidas</h2>
+<p><b>¿Necesito internet?</b> No para vender. La app funciona offline después de instalarla.</p>
+<p><b>¿Dónde quedan los datos?</b> En este equipo. Si cambias de equipo, usa la copia de seguridad.</p>
+<p><b>¿Puedo cambiar los productos?</b> Sí. Todo es editable.</p>
+<p><b>¿Qué pasa si no cargo costos?</b> La utilidad se ve más alta de lo real. Carga el costo de cada producto.</p>
+</div>
+
+<p class="footer">Mi Negocio · Comida, costos y domicilios · Manual v1.0</p>
+</main>
+</body>
+</html>

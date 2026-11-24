@@ -8,7 +8,7 @@ window.MI_NEGOCIO = {
   precioRegular: "$80.000 COP",
 
   // Paquete que se descarga.
-  instalador: "Instalador-MiNegocio-1.0.0.exe",
+  instalador: "app/index.html",
 
   planes: [
     {
