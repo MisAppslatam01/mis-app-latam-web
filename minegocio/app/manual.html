@@ -82,6 +82,28 @@ table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}th,td{tex
 <div class="notice">Fórmula: utilidad = ventas − costo de lo vendido − gastos − merma.</div>
 </div>
 
+<h2 id="costos">2.1 Cómo se relacionan costo, insumos y compras</h2>
+<div class="card">
+<p><b>Producto</b> es lo que vendes. <b>Insumo</b> es lo que usas para hacerlo. <b>Compra</b> es cuando traes insumos. <b>Producción</b> es cuando transformas insumos en producto.</p>
+<pre style="overflow:auto;background:#fff7ed;border:1px solid var(--line);border-radius:10px;padding:12px;font-size:13px;line-height:1.5">COMPRA ──► INSUMOS ──► RECETA ──► PRODUCCIÓN ──► PRODUCTO ──► VENTA
+(dinero)   (despensa)   (cantidad)  (transforma)   (lo que vendes)  (ingreso)
+              │                          │              │
+              │ sobra                    │ costo unit.  │ stock
+              ▼                          ▼              ▼
+         sigue en despensa         costo del producto   CAJA → UTILIDAD</pre>
+<p><b>Una compra no es el costo de una venta.</b> Si compras 10 lb de pollo, no todo el pollo se va en una empanada. Solo se costea lo que usa la producción; lo que sobra sigue en insumos.</p>
+<h3>Dos formas de trabajar</h3>
+<table>
+<tr><th>Forma</th><th>Cuándo usarla</th><th>Qué haces</th></tr>
+<tr><td><b>Costo directo</b></td><td>Empanadas, arepas, fritos; no quieres llevar despensa</td><td>Escribes el costo por producto y vendes. No usas insumos, compras ni producción.</td></tr>
+<tr><td><b>Receta + producción</b></td><td>Pasteles, lotes, o quieres saber cuánto arroz/aceite queda</td><td>Creas insumos, registras compras, cargas la receta y produces. La app calcula el costo por unidad.</td></tr>
+</table>
+<h3>Ejemplo</h3>
+<p>Para 20 empanadas usas $40.000 de pollo, $4.000 de arroz, $6.000 de aceite y $10.000 de otros. Total: $60.000. Costo por empanada: $60.000 ÷ 20 = <b>$3.000</b>.</p>
+<p>Si vendes una a $5.000: venta $5.000 − costo $3.000 = <b>$2.000</b> de ganancia. El arroz y el aceite que no usaste siguen en la despensa.</p>
+<div class="notice">No pongas la misma compra en <b>Compras</b> y en <b>Gastos</b>. Si es un insumo que vas a usar, va en Compras. Si es arriendo, luz o transporte, va en Gastos.</div>
+</div>
+
 <h2 id="insumos">3. Insumos y compras</h2>
 <div class="card">
 <p>Los insumos son ingredientes o materiales: arroz, pollo, queso, empaques.</p>

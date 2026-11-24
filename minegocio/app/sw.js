@@ -1,5 +1,5 @@
-/* Mi Negocio PWA — caché offline */
-const CACHE = 'minegocio-v4';
+﻿/* Mi Negocio PWA â€” cachÃ© offline */
+const CACHE = 'minegocio-v5';
 const ASSETS = [
   './',
   './index.html',
@@ -42,3 +42,4 @@ self.addEventListener('fetch', (event) => {
     })
   );
 });
+
