@@ -1445,6 +1445,7 @@ function paginaMas() {
   return `<h2>Más</h2><p class="small muted" style="margin-bottom:12px">Todo lo que no es venta del día.</p>
   <div class="more-grid">${accesos.map(([tab, ic, t, s]) => `<button class="more-btn" onclick="setTab('${tab}')"><span class="ic">${ic}</span><span><b>${t}</b><span>${s}</span></span></button>`).join('')}</div>
   <a class="more-btn mt10" href="manual.html" target="_blank" rel="noopener"><span class="ic">📘</span><span><b>Manual</b><span>Cómo usar cada módulo</span></span></a>
+  <a class="more-btn mt10" href="manual.html#costos" target="_blank" rel="noopener"><span class="ic">🧮</span><span><b>Costos, insumos y compras</b><span>Cómo se calcula el costo real</span></span></a>
   <div class="card mt14">
     <div class="card-title"><h2>Resumen rápido</h2><button class="link" onclick="setTab('utilidad')">Ver utilidad ›</button></div>
     <div class="total-row"><span>Productos activos</span><b>${S.productos.filter((p) => p.disponible).length}</b></div>
